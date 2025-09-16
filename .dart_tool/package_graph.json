@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "quran",
-      "version": "1.5.0",
+      "version": "1.5.1",
       "dependencies": [
         "collection",
         "flutter"
@@ -50,7 +50,7 @@
     },
     {
       "name": "flutter_lints",
-      "version": "2.0.3",
+      "version": "6.0.0",
       "dependencies": [
         "lints"
       ]
@@ -350,7 +350,7 @@
     },
     {
       "name": "lints",
-      "version": "2.1.1",
+      "version": "6.0.0",
       "dependencies": []
     },
     {
