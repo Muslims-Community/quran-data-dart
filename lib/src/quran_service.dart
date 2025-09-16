@@ -420,7 +420,7 @@ class QuranService {
 
     // Basic counts
     final totalSurahs = surahs.length;
-    final totalAyat = surahs.fold(0, (sum, surah) => sum + surah.numberOfAyahs);
+    final totalAyat = surahs.fold<int>(0, (sum, surah) => sum + surah.numberOfAyahs);
     final meccanSurahs = surahs.where((s) => s.isMeccan).length;
     final medinanSurahs = surahs.where((s) => s.isMedianan).length;
 
@@ -444,8 +444,8 @@ class QuranService {
         curr.value > next.value ? curr : next).key;
 
     // Calculate revelation analysis
-    final meccanAyat = surahs.where((s) => s.isMeccan).fold(0, (sum, s) => sum + s.numberOfAyahs);
-    final medinanAyat = surahs.where((s) => s.isMedianan).fold(0, (sum, s) => sum + s.numberOfAyahs);
+    final meccanAyat = surahs.where((s) => s.isMeccan).fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
+    final medinanAyat = surahs.where((s) => s.isMedianan).fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
 
     final meccanLengths = surahs.where((s) => s.isMeccan).map((s) => s.numberOfAyahs).toList();
     final medinanLengths = surahs.where((s) => s.isMedianan).map((s) => s.numberOfAyahs).toList();

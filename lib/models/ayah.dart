@@ -1,3 +1,5 @@
+import 'surah.dart';
+
 /// Represents a single ayah (verse) from the Quran.
 class Ayah {
   /// The ayah number within its surah
@@ -167,5 +169,3 @@ class AyahWithSurah extends Ayah {
   }
 }
 
-// Import surah model
-import 'surah.dart';

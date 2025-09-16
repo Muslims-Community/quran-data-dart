@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import '../models/quran_data.dart';
-import '../models/surah.dart';
-import '../models/ayah.dart';
 
 /// Handles loading and parsing of Quran data from assets.
 class QuranDataLoader {
@@ -60,7 +58,7 @@ class QuranDataLoader {
       }
 
       // Check total ayat count
-      final totalAyat = data.surahs.fold(0, (sum, surah) => sum + surah.numberOfAyahs);
+      final totalAyat = data.surahs.fold<int>(0, (sum, surah) => sum + surah.numberOfAyahs);
       if (totalAyat != 6236) {
         return false;
       }
@@ -124,13 +122,13 @@ class QuranDataLoader {
 
       // Calculate statistics
       final totalSurahs = data.surahs.length;
-      final totalAyat = data.surahs.fold(0, (sum, surah) => sum + surah.numberOfAyahs);
-      final totalCharacters = data.surahs.fold(0, (sum, surah) =>
-          sum + surah.ayat.fold(0, (ayahSum, ayah) => ayahSum + ayah.text.length));
+      final totalAyat = data.surahs.fold<int>(0, (sum, surah) => sum + surah.numberOfAyahs);
+      final totalCharacters = data.surahs.fold<int>(0, (sum, surah) =>
+          sum + surah.ayat.fold<int>(0, (ayahSum, ayah) => ayahSum + ayah.text.length));
 
       final meccanSurahs = data.surahs.where((s) => s.isMeccan).length;
       final medinanSurahs = data.surahs.where((s) => s.isMedianan).length;
-      final sajdahAyat = data.surahs.fold(0, (sum, surah) =>
+      final sajdahAyat = data.surahs.fold<int>(0, (sum, surah) =>
           sum + surah.ayat.where((ayah) => ayah.sajdah).length);
 
       return DataLoadingStats(
