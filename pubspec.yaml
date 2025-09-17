@@ -26,11 +26,8 @@ topics:
   - quran
   - islam
   - arabic
-  - islamic
-  - religious
-  - offline
   - flutter
-  - dart
+  - offline
 
 platforms:
   android:
