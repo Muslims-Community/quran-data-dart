@@ -48,8 +48,13 @@ class Surah {
       revelationType: json['revelationType'] as String,
       numberOfAyahs: json['numberOfAyahs'] as int,
       revelationOrder: json['revelationOrder'] as int,
-      ayat: ayatList?.map((ayahJson) => Ayah.fromJson(ayahJson as Map<String, dynamic>)).toList() ?? [],
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      ayat: ayatList
+              ?.map(
+                  (ayahJson) => Ayah.fromJson(ayahJson as Map<String, dynamic>))
+              .toList() ??
+          [],
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -103,7 +108,8 @@ class Surah {
 
     return ayat.firstWhere(
       (ayah) => ayah.id == ayahNumber,
-      orElse: () => throw ArgumentError('Ayah $ayahNumber not found in surah $id'),
+      orElse: () =>
+          throw ArgumentError('Ayah $ayahNumber not found in surah $id'),
     );
   }
 
@@ -113,7 +119,9 @@ class Surah {
       throw ArgumentError('Invalid ayah range: $startAyah-$endAyah');
     }
 
-    return ayat.where((ayah) => ayah.id >= startAyah && ayah.id <= endAyah).toList();
+    return ayat
+        .where((ayah) => ayah.id >= startAyah && ayah.id <= endAyah)
+        .toList();
   }
 
   /// Get all sajdah ayat in this surah

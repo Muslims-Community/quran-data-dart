@@ -32,7 +32,8 @@ class AyahRange {
       ayat: ayatList
           .map((ayahJson) => Ayah.fromJson(ayahJson as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 

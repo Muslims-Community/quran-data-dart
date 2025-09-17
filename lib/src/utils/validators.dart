@@ -10,36 +10,42 @@ class QuranValidators {
   /// Validate ayah ID within a surah
   static void validateAyahId(int ayahId, int maxAyat) {
     if (ayahId < 1 || ayahId > maxAyat) {
-      throw ArgumentError('Ayah ID must be between 1 and $maxAyat, got: $ayahId');
+      throw ArgumentError(
+          'Ayah ID must be between 1 and $maxAyat, got: $ayahId');
     }
   }
 
   /// Validate ayah range
   static void validateAyahRange(int startAyah, int endAyah, int maxAyat) {
     if (startAyah < 1 || startAyah > maxAyat) {
-      throw ArgumentError('Start ayah must be between 1 and $maxAyat, got: $startAyah');
+      throw ArgumentError(
+          'Start ayah must be between 1 and $maxAyat, got: $startAyah');
     }
 
     if (endAyah < 1 || endAyah > maxAyat) {
-      throw ArgumentError('End ayah must be between 1 and $maxAyat, got: $endAyah');
+      throw ArgumentError(
+          'End ayah must be between 1 and $maxAyat, got: $endAyah');
     }
 
     if (startAyah > endAyah) {
-      throw ArgumentError('Start ayah ($startAyah) cannot be greater than end ayah ($endAyah)');
+      throw ArgumentError(
+          'Start ayah ($startAyah) cannot be greater than end ayah ($endAyah)');
     }
   }
 
   /// Validate Juz number (1-30)
   static void validateJuzNumber(int juzNumber) {
     if (juzNumber < 1 || juzNumber > 30) {
-      throw ArgumentError('Juz number must be between 1 and 30, got: $juzNumber');
+      throw ArgumentError(
+          'Juz number must be between 1 and 30, got: $juzNumber');
     }
   }
 
   /// Validate Hizb number (1-60)
   static void validateHizbNumber(int hizbNumber) {
     if (hizbNumber < 1 || hizbNumber > 60) {
-      throw ArgumentError('Hizb number must be between 1 and 60, got: $hizbNumber');
+      throw ArgumentError(
+          'Hizb number must be between 1 and 60, got: $hizbNumber');
     }
   }
 
@@ -48,30 +54,29 @@ class QuranValidators {
     if (searchTerm.trim().isEmpty) {
       throw ArgumentError('Search term cannot be empty');
     }
-
-    if (searchTerm.trim().length < 1) {
-      throw ArgumentError('Search term must be at least 1 character long');
-    }
   }
 
   /// Validate revelation type
   static void validateRevelationType(String revelationType) {
     if (revelationType != 'Meccan' && revelationType != 'Medinan') {
-      throw ArgumentError('Revelation type must be "Meccan" or "Medinan", got: $revelationType');
+      throw ArgumentError(
+          'Revelation type must be "Meccan" or "Medinan", got: $revelationType');
     }
   }
 
   /// Validate revelation order (1-114)
   static void validateRevelationOrder(int revelationOrder) {
     if (revelationOrder < 1 || revelationOrder > 114) {
-      throw ArgumentError('Revelation order must be between 1 and 114, got: $revelationOrder');
+      throw ArgumentError(
+          'Revelation order must be between 1 and 114, got: $revelationOrder');
     }
   }
 
   /// Validate number of ayat for a surah
   static void validateNumberOfAyahs(int numberOfAyahs) {
     if (numberOfAyahs < 3 || numberOfAyahs > 286) {
-      throw ArgumentError('Number of ayahs must be between 3 and 286, got: $numberOfAyahs');
+      throw ArgumentError(
+          'Number of ayahs must be between 3 and 286, got: $numberOfAyahs');
     }
   }
 
@@ -110,7 +115,8 @@ class QuranValidators {
   /// Validate Arabic text format (basic check for Arabic characters)
   static bool isArabicText(String text) {
     // Basic regex to check if text contains Arabic characters
-    final arabicRegex = RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]');
+    final arabicRegex = RegExp(
+        r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]');
     return arabicRegex.hasMatch(text);
   }
 
@@ -123,7 +129,8 @@ class QuranValidators {
 
   /// Validate email format (for contact/feedback features)
   static void validateEmail(String email) {
-    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final emailRegex =
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     if (!emailRegex.hasMatch(email)) {
       throw ArgumentError('Invalid email format: $email');
     }
@@ -140,7 +147,8 @@ class QuranValidators {
   /// Validate percentage value (0-100)
   static void validatePercentage(double percentage) {
     if (percentage < 0 || percentage > 100) {
-      throw ArgumentError('Percentage must be between 0 and 100, got: $percentage');
+      throw ArgumentError(
+          'Percentage must be between 0 and 100, got: $percentage');
     }
   }
 
@@ -161,7 +169,8 @@ class QuranValidators {
   /// Validate that a number is within a specific range
   static void validateRange(num value, num min, num max, String paramName) {
     if (value < min || value > max) {
-      throw ArgumentError('$paramName must be between $min and $max, got: $value');
+      throw ArgumentError(
+          '$paramName must be between $min and $max, got: $value');
     }
   }
 
@@ -173,10 +182,12 @@ class QuranValidators {
   }
 
   /// Validate file extension
-  static void validateFileExtension(String filePath, List<String> allowedExtensions) {
+  static void validateFileExtension(
+      String filePath, List<String> allowedExtensions) {
     final extension = filePath.split('.').last.toLowerCase();
     if (!allowedExtensions.contains(extension)) {
-      throw ArgumentError('File must have one of these extensions: ${allowedExtensions.join(', ')}');
+      throw ArgumentError(
+          'File must have one of these extensions: ${allowedExtensions.join(', ')}');
     }
   }
 
@@ -197,7 +208,8 @@ class QuranValidators {
     }
 
     if (surahs.length != 114) {
-      throw ArgumentError('surahs must contain exactly 114 entries, got: ${surahs.length}');
+      throw ArgumentError(
+          'surahs must contain exactly 114 entries, got: ${surahs.length}');
     }
 
     // Validate each surah structure
@@ -212,8 +224,17 @@ class QuranValidators {
   }
 
   /// Validate individual surah structure
-  static void validateSurahStructure(Map<String, dynamic> surah, int expectedId) {
-    final requiredFields = ['id', 'name', 'englishName', 'revelationType', 'numberOfAyahs', 'revelationOrder', 'ayat'];
+  static void validateSurahStructure(
+      Map<String, dynamic> surah, int expectedId) {
+    final requiredFields = [
+      'id',
+      'name',
+      'englishName',
+      'revelationType',
+      'numberOfAyahs',
+      'revelationOrder',
+      'ayat'
+    ];
 
     for (final field in requiredFields) {
       if (!surah.containsKey(field)) {
@@ -239,7 +260,8 @@ class QuranValidators {
     }
 
     if (ayat.length != numberOfAyahs) {
-      throw ArgumentError('ayat list length (${ayat.length}) must match numberOfAyahs ($numberOfAyahs)');
+      throw ArgumentError(
+          'ayat list length (${ayat.length}) must match numberOfAyahs ($numberOfAyahs)');
     }
 
     // Validate each ayah

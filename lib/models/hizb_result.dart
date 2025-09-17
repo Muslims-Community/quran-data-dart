@@ -34,9 +34,11 @@ class HizbResult {
       juz: json['juz'] as int,
       totalAyat: json['totalAyat'] as int,
       ayat: ayatList
-          .map((ayahJson) => AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
+          .map((ayahJson) =>
+              AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 

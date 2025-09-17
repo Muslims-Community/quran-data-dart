@@ -40,7 +40,8 @@ class QuranData {
 
     return QuranData(
       version: json['version'] as String? ?? '1.1',
-      source: json['source'] as String? ?? 'Tanzil Project - https://tanzil.net',
+      source:
+          json['source'] as String? ?? 'Tanzil Project - https://tanzil.net',
       surahs: surahsList
           .map((surahJson) => Surah.fromJson(surahJson as Map<String, dynamic>))
           .toList(),
@@ -76,7 +77,9 @@ class QuranData {
 
   /// Get surahs by revelation type
   List<Surah> getSurahsByRevelationType(String revelationType) {
-    return surahs.where((surah) => surah.revelationType == revelationType).toList();
+    return surahs
+        .where((surah) => surah.revelationType == revelationType)
+        .toList();
   }
 
   /// Get all Meccan surahs
@@ -108,14 +111,14 @@ class QuranData {
 
   /// Get the longest surah
   Surah get longestSurah {
-    return surahs.reduce((curr, next) =>
-        curr.numberOfAyahs > next.numberOfAyahs ? curr : next);
+    return surahs.reduce(
+        (curr, next) => curr.numberOfAyahs > next.numberOfAyahs ? curr : next);
   }
 
   /// Get the shortest surah
   Surah get shortestSurah {
-    return surahs.reduce((curr, next) =>
-        curr.numberOfAyahs < next.numberOfAyahs ? curr : next);
+    return surahs.reduce(
+        (curr, next) => curr.numberOfAyahs < next.numberOfAyahs ? curr : next);
   }
 
   /// Get surahs that contain sajdah ayat
@@ -144,11 +147,15 @@ class QuranData {
 
   /// Get summary statistics
   DataSummary get summary {
-    final totalCharacters = surahs.fold<int>(0, (sum, surah) =>
-        sum + surah.ayat.fold<int>(0, (ayahSum, ayah) => ayahSum + ayah.text.length));
+    final totalCharacters = surahs.fold<int>(
+        0,
+        (sum, surah) =>
+            sum +
+            surah.ayat
+                .fold<int>(0, (ayahSum, ayah) => ayahSum + ayah.text.length));
 
-    final sajdahCount = surahs.fold<int>(0, (sum, surah) =>
-        sum + surah.sajdahAyat.length);
+    final sajdahCount =
+        surahs.fold<int>(0, (sum, surah) => sum + surah.sajdahAyat.length);
 
     return DataSummary(
       totalSurahs: metadata.totalSurahs,

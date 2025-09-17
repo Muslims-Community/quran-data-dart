@@ -53,11 +53,16 @@ class SurahStatistics {
       meccanSurahs: json['meccanSurahs'] as int,
       medinanSurahs: json['medinanSurahs'] as int,
       averageAyatPerSurah: (json['averageAyatPerSurah'] as num).toDouble(),
-      longestSurah: Surah.fromJson(json['longestSurah'] as Map<String, dynamic>),
-      shortestSurah: Surah.fromJson(json['shortestSurah'] as Map<String, dynamic>),
-      ayatCounts: AyatCounts.fromJson(json['ayatCounts'] as Map<String, dynamic>),
-      revelationAnalysis: RevelationAnalysis.fromJson(json['revelationAnalysis'] as Map<String, dynamic>),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      longestSurah:
+          Surah.fromJson(json['longestSurah'] as Map<String, dynamic>),
+      shortestSurah:
+          Surah.fromJson(json['shortestSurah'] as Map<String, dynamic>),
+      ayatCounts:
+          AyatCounts.fromJson(json['ayatCounts'] as Map<String, dynamic>),
+      revelationAnalysis: RevelationAnalysis.fromJson(
+          json['revelationAnalysis'] as Map<String, dynamic>),
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -84,7 +89,8 @@ class SurahStatistics {
   double get medinanPercentage => (medinanSurahs / totalSurahs) * 100;
 
   /// Length difference ratio between longest and shortest surah
-  double get lengthDifferenceRatio => longestSurah.numberOfAyahs / shortestSurah.numberOfAyahs;
+  double get lengthDifferenceRatio =>
+      longestSurah.numberOfAyahs / shortestSurah.numberOfAyahs;
 
   /// Estimated reading time for complete Quran (in minutes, at 2 ayat/minute)
   double get totalReadingMinutes => totalAyat / 2.0;
@@ -166,10 +172,10 @@ class AyatCounts {
   /// Get surahs by length category
   Map<String, int> get lengthCategories {
     int veryShort = 0; // 1-10 ayat
-    int short = 0;     // 11-50 ayat
-    int medium = 0;    // 51-100 ayat
-    int long = 0;      // 101-200 ayat
-    int veryLong = 0;  // 200+ ayat
+    int short = 0; // 11-50 ayat
+    int medium = 0; // 51-100 ayat
+    int long = 0; // 101-200 ayat
+    int veryLong = 0; // 200+ ayat
 
     distribution.forEach((ayatCount, surahCount) {
       if (ayatCount <= 10) {
@@ -234,10 +240,14 @@ class RevelationAnalysis {
   }
 
   /// Ratio of Meccan to Medinan average length
-  double get lengthRatio => meccanCharacteristics.averageLength / medinanCharacteristics.averageLength;
+  double get lengthRatio =>
+      meccanCharacteristics.averageLength /
+      medinanCharacteristics.averageLength;
 
   /// Difference in average length
-  double get lengthDifference => medinanCharacteristics.averageLength - meccanCharacteristics.averageLength;
+  double get lengthDifference =>
+      medinanCharacteristics.averageLength -
+      meccanCharacteristics.averageLength;
 
   @override
   String toString() {

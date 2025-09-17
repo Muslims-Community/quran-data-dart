@@ -38,7 +38,8 @@ class QuranService {
   /// Ensure data is loaded before operations
   static void _ensureDataLoaded() {
     if (_quranData == null) {
-      throw StateError('QuranService not initialized. Call QuranService.initialize() first.');
+      throw StateError(
+          'QuranService not initialized. Call QuranService.initialize() first.');
     }
   }
 
@@ -71,7 +72,8 @@ class QuranService {
 
     final ayah = surah.ayat.firstWhere(
       (a) => a.id == ayahId,
-      orElse: () => throw ArgumentError('Ayah $ayahId not found in surah $surahId'),
+      orElse: () =>
+          throw ArgumentError('Ayah $ayahId not found in surah $surahId'),
     );
 
     return AyahWithSurah(
@@ -248,7 +250,8 @@ class QuranService {
   /// final range = await QuranService.getAyahRange(2, 1, 5); // Al-Baqarah 1-5
   /// print('Reading ${range.range.count} ayat from ${range.surah.englishName}');
   /// ```
-  static Future<AyahRange> getAyahRange(int surahId, int startAyah, int endAyah) async {
+  static Future<AyahRange> getAyahRange(
+      int surahId, int startAyah, int endAyah) async {
     await initialize();
     _ensureDataLoaded();
 
@@ -420,15 +423,16 @@ class QuranService {
 
     // Basic counts
     final totalSurahs = surahs.length;
-    final totalAyat = surahs.fold<int>(0, (sum, surah) => sum + surah.numberOfAyahs);
+    final totalAyat =
+        surahs.fold<int>(0, (sum, surah) => sum + surah.numberOfAyahs);
     final meccanSurahs = surahs.where((s) => s.isMeccan).length;
     final medinanSurahs = surahs.where((s) => s.isMedianan).length;
 
     // Find extremes
-    final longestSurah = surahs.reduce((curr, next) =>
-        curr.numberOfAyahs > next.numberOfAyahs ? curr : next);
-    final shortestSurah = surahs.reduce((curr, next) =>
-        curr.numberOfAyahs < next.numberOfAyahs ? curr : next);
+    final longestSurah = surahs.reduce(
+        (curr, next) => curr.numberOfAyahs > next.numberOfAyahs ? curr : next);
+    final shortestSurah = surahs.reduce(
+        (curr, next) => curr.numberOfAyahs < next.numberOfAyahs ? curr : next);
 
     // Calculate averages
     final averageAyatPerSurah = totalAyat / totalSurahs;
@@ -436,19 +440,27 @@ class QuranService {
     // Create distribution map
     final Map<int, int> distribution = {};
     for (final surah in surahs) {
-      distribution[surah.numberOfAyahs] = (distribution[surah.numberOfAyahs] ?? 0) + 1;
+      distribution[surah.numberOfAyahs] =
+          (distribution[surah.numberOfAyahs] ?? 0) + 1;
     }
 
     // Find mode (most common length)
-    final mode = distribution.entries.reduce((curr, next) =>
-        curr.value > next.value ? curr : next).key;
+    final mode = distribution.entries
+        .reduce((curr, next) => curr.value > next.value ? curr : next)
+        .key;
 
     // Calculate revelation analysis
-    final meccanAyat = surahs.where((s) => s.isMeccan).fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
-    final medinanAyat = surahs.where((s) => s.isMedianan).fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
+    final meccanAyat = surahs
+        .where((s) => s.isMeccan)
+        .fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
+    final medinanAyat = surahs
+        .where((s) => s.isMedianan)
+        .fold<int>(0, (sum, s) => sum + s.numberOfAyahs);
 
-    final meccanLengths = surahs.where((s) => s.isMeccan).map((s) => s.numberOfAyahs).toList();
-    final medinanLengths = surahs.where((s) => s.isMedianan).map((s) => s.numberOfAyahs).toList();
+    final meccanLengths =
+        surahs.where((s) => s.isMeccan).map((s) => s.numberOfAyahs).toList();
+    final medinanLengths =
+        surahs.where((s) => s.isMedianan).map((s) => s.numberOfAyahs).toList();
 
     return SurahStatistics(
       totalSurahs: totalSurahs,
@@ -467,16 +479,28 @@ class QuranService {
       ),
       revelationAnalysis: RevelationAnalysis(
         meccanCharacteristics: RevelationCharacteristics(
-          averageLength: meccanLengths.isNotEmpty ? meccanLengths.reduce((a, b) => a + b) / meccanLengths.length : 0,
+          averageLength: meccanLengths.isNotEmpty
+              ? meccanLengths.reduce((a, b) => a + b) / meccanLengths.length
+              : 0,
           totalAyat: meccanAyat,
-          shortestLength: meccanLengths.isNotEmpty ? meccanLengths.reduce((a, b) => a < b ? a : b) : 0,
-          longestLength: meccanLengths.isNotEmpty ? meccanLengths.reduce((a, b) => a > b ? a : b) : 0,
+          shortestLength: meccanLengths.isNotEmpty
+              ? meccanLengths.reduce((a, b) => a < b ? a : b)
+              : 0,
+          longestLength: meccanLengths.isNotEmpty
+              ? meccanLengths.reduce((a, b) => a > b ? a : b)
+              : 0,
         ),
         medinanCharacteristics: RevelationCharacteristics(
-          averageLength: medinanLengths.isNotEmpty ? medinanLengths.reduce((a, b) => a + b) / medinanLengths.length : 0,
+          averageLength: medinanLengths.isNotEmpty
+              ? medinanLengths.reduce((a, b) => a + b) / medinanLengths.length
+              : 0,
           totalAyat: medinanAyat,
-          shortestLength: medinanLengths.isNotEmpty ? medinanLengths.reduce((a, b) => a < b ? a : b) : 0,
-          longestLength: medinanLengths.isNotEmpty ? medinanLengths.reduce((a, b) => a > b ? a : b) : 0,
+          shortestLength: medinanLengths.isNotEmpty
+              ? medinanLengths.reduce((a, b) => a < b ? a : b)
+              : 0,
+          longestLength: medinanLengths.isNotEmpty
+              ? medinanLengths.reduce((a, b) => a > b ? a : b)
+              : 0,
         ),
       ),
     );

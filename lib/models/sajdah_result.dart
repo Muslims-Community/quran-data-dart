@@ -24,9 +24,11 @@ class SajdahResult {
     return SajdahResult(
       totalSajdahAyat: json['totalSajdahAyat'] as int,
       sajdahAyat: sajdahAyatList
-          .map((ayahJson) => AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
+          .map((ayahJson) =>
+              AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -46,7 +48,9 @@ class SajdahResult {
 
   /// Get sajdah ayat by revelation type
   List<AyahWithSurah> getSajdahByRevelationType(String revelationType) {
-    return sajdahAyat.where((ayah) => ayah.surah.revelationType == revelationType).toList();
+    return sajdahAyat
+        .where((ayah) => ayah.surah.revelationType == revelationType)
+        .toList();
   }
 
   /// Get Meccan sajdah ayat
@@ -147,10 +151,12 @@ class SajdahResult {
   bool get isComplete => totalSajdahAyat == 15;
 
   /// Get the first sajdah ayah (by Mushaf order)
-  AyahWithSurah? get firstSajdah => sajdahAyat.isNotEmpty ? sajdahAyat.first : null;
+  AyahWithSurah? get firstSajdah =>
+      sajdahAyat.isNotEmpty ? sajdahAyat.first : null;
 
   /// Get the last sajdah ayah (by Mushaf order)
-  AyahWithSurah? get lastSajdah => sajdahAyat.isNotEmpty ? sajdahAyat.last : null;
+  AyahWithSurah? get lastSajdah =>
+      sajdahAyat.isNotEmpty ? sajdahAyat.last : null;
 
   @override
   bool operator ==(Object other) =>
@@ -216,13 +222,16 @@ class SajdahStatistics {
   });
 
   /// Percentage of sajdah ayat in Meccan surahs
-  double get meccanPercentage => totalSajdahAyat > 0 ? (meccanSajdah / totalSajdahAyat) * 100 : 0;
+  double get meccanPercentage =>
+      totalSajdahAyat > 0 ? (meccanSajdah / totalSajdahAyat) * 100 : 0;
 
   /// Percentage of sajdah ayat in Medinan surahs
-  double get medinanPercentage => totalSajdahAyat > 0 ? (medinanSajdah / totalSajdahAyat) * 100 : 0;
+  double get medinanPercentage =>
+      totalSajdahAyat > 0 ? (medinanSajdah / totalSajdahAyat) * 100 : 0;
 
   /// Average sajdah ayat per surah (among surahs that have sajdah)
-  double get averagePerSurah => uniqueSurahs > 0 ? totalSajdahAyat / uniqueSurahs : 0;
+  double get averagePerSurah =>
+      uniqueSurahs > 0 ? totalSajdahAyat / uniqueSurahs : 0;
 
   /// Average sajdah ayat per Juz (among Juz that have sajdah)
   double get averagePerJuz => uniqueJuz > 0 ? totalSajdahAyat / uniqueJuz : 0;

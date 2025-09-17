@@ -5,14 +5,16 @@ library quran.utils.extensions;
 extension ArabicStringExtensions on String {
   /// Check if the string contains Arabic characters
   bool get hasArabicCharacters {
-    final arabicRegex = RegExp(r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]');
+    final arabicRegex = RegExp(
+        r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]');
     return arabicRegex.hasMatch(this);
   }
 
   /// Check if the string is purely Arabic text
   bool get isArabicText {
     if (isEmpty) return false;
-    final arabicRegex = RegExp(r'^[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\s\u060C\u061B\u061F\u0640\u064B-\u065F\u0670\u06D6-\u06ED]+$');
+    final arabicRegex = RegExp(
+        r'^[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\s\u060C\u061B\u061F\u0640\u064B-\u065F\u0670\u06D6-\u06ED]+$');
     return arabicRegex.hasMatch(this);
   }
 
@@ -32,13 +34,15 @@ extension ArabicStringExtensions on String {
 
   /// Check if string is a valid email
   bool get isValidEmail {
-    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final emailRegex =
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegex.hasMatch(this);
   }
 
   /// Check if string is a valid URL
   bool get isValidUrl {
-    final urlRegex = RegExp(r'^https?:\/\/([\w\-]+(\.[\w\-]+)+)([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?$');
+    final urlRegex = RegExp(
+        r'^https?:\/\/([\w\-]+(\.[\w\-]+)+)([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?$');
     return urlRegex.hasMatch(this);
   }
 
@@ -52,13 +56,16 @@ extension ArabicStringExtensions on String {
   String get titleCase {
     if (isEmpty) return this;
     return split(' ')
-        .map((word) => word.isNotEmpty ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}' : word)
+        .map((word) => word.isNotEmpty
+            ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
+            : word)
         .join(' ');
   }
 
   /// Convert to snake_case
   String get snakeCase {
-    return replaceAllMapped(RegExp(r'[A-Z]'), (match) => '_${match.group(0)!.toLowerCase()}')
+    return replaceAllMapped(
+            RegExp(r'[A-Z]'), (match) => '_${match.group(0)!.toLowerCase()}')
         .replaceAll(RegExp(r'^_'), '');
   }
 
@@ -69,7 +76,12 @@ extension ArabicStringExtensions on String {
     if (words.isEmpty) return this;
 
     return words.first.toLowerCase() +
-           words.skip(1).map((word) => word.isNotEmpty ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}' : '').join();
+        words
+            .skip(1)
+            .map((word) => word.isNotEmpty
+                ? '${word[0].toUpperCase()}${word.substring(1).toLowerCase()}'
+                : '')
+            .join();
   }
 }
 
@@ -161,7 +173,8 @@ extension QuranDoubleExtensions on double {
   String get asFileSize {
     if (this < 1024) return '${this.toStringAsFixed(0)} B';
     if (this < 1024 * 1024) return '${(this / 1024).toStringAsFixed(1)} KB';
-    if (this < 1024 * 1024 * 1024) return '${(this / (1024 * 1024)).toStringAsFixed(1)} MB';
+    if (this < 1024 * 1024 * 1024)
+      return '${(this / (1024 * 1024)).toStringAsFixed(1)} MB';
     return '${(this / (1024 * 1024 * 1024)).toStringAsFixed(1)} GB';
   }
 
@@ -189,9 +202,10 @@ extension QuranListExtensions<T> on List<T> {
 
   /// Get elements at specified indices
   List<T> getAtIndices(List<int> indices) {
-    return indices.where((index) => index >= 0 && index < length)
-                 .map((index) => this[index])
-                 .toList();
+    return indices
+        .where((index) => index >= 0 && index < length)
+        .map((index) => this[index])
+        .toList();
   }
 
   /// Split list into chunks of specified size
@@ -269,7 +283,8 @@ extension QuranMapExtensions<K, V> on Map<K, V> {
   }
 
   /// Merge with another map
-  Map<K, V> merge(Map<K, V> other, {V Function(V current, V other)? onConflict}) {
+  Map<K, V> merge(Map<K, V> other,
+      {V Function(V current, V other)? onConflict}) {
     final merged = Map<K, V>.from(this);
     other.forEach((key, value) {
       if (merged.containsKey(key) && onConflict != null) {
@@ -298,13 +313,17 @@ extension QuranDateTimeExtensions on DateTime {
   /// Check if date is yesterday
   bool get isYesterday {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    return year == yesterday.year && month == yesterday.month && day == yesterday.day;
+    return year == yesterday.year &&
+        month == yesterday.month &&
+        day == yesterday.day;
   }
 
   /// Check if date is tomorrow
   bool get isTomorrow {
     final tomorrow = DateTime.now().add(const Duration(days: 1));
-    return year == tomorrow.year && month == tomorrow.month && day == tomorrow.day;
+    return year == tomorrow.year &&
+        month == tomorrow.month &&
+        day == tomorrow.day;
   }
 
   /// Get day of year (1-366)
@@ -333,9 +352,18 @@ extension QuranDateTimeExtensions on DateTime {
   String get asIslamicDate {
     // This is a simplified format - a full Islamic calendar conversion would require more complex calculations
     const months = [
-      'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
-      'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
-      'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+      'Muharram',
+      'Safar',
+      'Rabi\' al-awwal',
+      'Rabi\' al-thani',
+      'Jumada al-awwal',
+      'Jumada al-thani',
+      'Rajab',
+      'Sha\'ban',
+      'Ramadan',
+      'Shawwal',
+      'Dhu al-Qi\'dah',
+      'Dhu al-Hijjah'
     ];
 
     // Simplified approximation - not accurate Islamic calendar

@@ -29,9 +29,11 @@ class JuzResult {
       juz: json['juz'] as int,
       totalAyat: json['totalAyat'] as int,
       ayat: ayatList
-          .map((ayahJson) => AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
+          .map((ayahJson) =>
+              AyahWithSurah.fromJson(ayahJson as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -58,7 +60,9 @@ class JuzResult {
 
   /// Get ayat by revelation type
   List<AyahWithSurah> getAyatByRevelationType(String revelationType) {
-    return ayat.where((ayah) => ayah.surah.revelationType == revelationType).toList();
+    return ayat
+        .where((ayah) => ayah.surah.revelationType == revelationType)
+        .toList();
   }
 
   /// Get all sajdah ayat in this Juz
@@ -177,10 +181,12 @@ class JuzStatistics {
   });
 
   /// Percentage of Meccan ayat
-  double get meccanPercentage => totalAyat > 0 ? (meccanAyat / totalAyat) * 100 : 0;
+  double get meccanPercentage =>
+      totalAyat > 0 ? (meccanAyat / totalAyat) * 100 : 0;
 
   /// Percentage of Medinan ayat
-  double get medinanPercentage => totalAyat > 0 ? (medinanAyat / totalAyat) * 100 : 0;
+  double get medinanPercentage =>
+      totalAyat > 0 ? (medinanAyat / totalAyat) * 100 : 0;
 
   /// The surah with the most ayat in this Juz
   MapEntry<int, int>? get dominantSurah {

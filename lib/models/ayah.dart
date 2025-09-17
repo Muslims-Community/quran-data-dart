@@ -116,7 +116,8 @@ class AyahWithSurah extends Ayah {
       juz: json['juz'] as int,
       hizb: json['hizb'] as int,
       surah: Surah.fromJson(json['surah'] as Map<String, dynamic>),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -168,4 +169,3 @@ class AyahWithSurah extends Ayah {
     );
   }
 }
-

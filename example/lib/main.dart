@@ -120,7 +120,9 @@ class _DailyReadingTabState extends State<DailyReadingTab> {
   }
 
   Future<void> loadDailyReading() async {
-    final dayOfYear = DateTime.now().difference(DateTime(DateTime.now().year, 1, 1)).inDays + 1;
+    final dayOfYear =
+        DateTime.now().difference(DateTime(DateTime.now().year, 1, 1)).inDays +
+            1;
     final juzNumber = ((dayOfYear - 1) % 30) + 1;
 
     final juz = await QuranService.getJuz(juzNumber);
@@ -168,7 +170,8 @@ class _DailyReadingTabState extends State<DailyReadingTab> {
                     Padding(
                       padding: EdgeInsets.only(top: 8),
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: Colors.orange,
                           borderRadius: BorderRadius.circular(12),
@@ -215,9 +218,10 @@ class _DailyReadingTabState extends State<DailyReadingTab> {
                         SizedBox(height: 12),
                         Text(
                           '${inspirationalAyah!.surah.englishName} ${inspirationalAyah!.id}',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            fontStyle: FontStyle.italic,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    fontStyle: FontStyle.italic,
+                                  ),
                         ),
                       ],
                     ),
@@ -321,7 +325,8 @@ class _SearchTabState extends State<SearchTab> {
                     itemBuilder: (context, index) {
                       final ayah = searchResults!.results[index];
                       return Card(
-                        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 4.0),
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Column(
@@ -356,7 +361,8 @@ class _SearchTabState extends State<SearchTab> {
                 final surah = surahResults!.results[index];
                 return ListTile(
                   title: Text('${surah.englishName} (${surah.name})'),
-                  subtitle: Text('${surah.numberOfAyahs} ayat • ${surah.revelationType}'),
+                  subtitle: Text(
+                      '${surah.numberOfAyahs} ayat • ${surah.revelationType}'),
                   leading: CircleAvatar(child: Text('${surah.id}')),
                 );
               },
@@ -412,10 +418,14 @@ class _StatisticsTabState extends State<StatisticsTab> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              _buildStatCard('Total Surahs', '${stats!.totalSurahs}', Icons.book, Colors.blue),
-              _buildStatCard('Total Ayat', '${stats!.totalAyat}', Icons.format_list_numbered, Colors.green),
-              _buildStatCard('Meccan Surahs', '${stats!.meccanSurahs}', Icons.location_on, Colors.orange),
-              _buildStatCard('Medinan Surahs', '${stats!.medinanSurahs}', Icons.location_city, Colors.purple),
+              _buildStatCard('Total Surahs', '${stats!.totalSurahs}',
+                  Icons.book, Colors.blue),
+              _buildStatCard('Total Ayat', '${stats!.totalAyat}',
+                  Icons.format_list_numbered, Colors.green),
+              _buildStatCard('Meccan Surahs', '${stats!.meccanSurahs}',
+                  Icons.location_on, Colors.orange),
+              _buildStatCard('Medinan Surahs', '${stats!.medinanSurahs}',
+                  Icons.location_city, Colors.purple),
             ],
           ),
           SizedBox(height: 24),
@@ -425,7 +435,8 @@ class _StatisticsTabState extends State<StatisticsTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('📏 Length Extremes', style: Theme.of(context).textTheme.titleLarge),
+                  Text('📏 Length Extremes',
+                      style: Theme.of(context).textTheme.titleLarge),
                   SizedBox(height: 12),
                   ListTile(
                     leading: Icon(Icons.expand_more, color: Colors.red),
@@ -437,7 +448,8 @@ class _StatisticsTabState extends State<StatisticsTab> {
                     leading: Icon(Icons.expand_less, color: Colors.teal),
                     title: Text('Shortest Surah'),
                     subtitle: Text(stats!.shortestSurah.englishName),
-                    trailing: Text('${stats!.shortestSurah.numberOfAyahs} ayat'),
+                    trailing:
+                        Text('${stats!.shortestSurah.numberOfAyahs} ayat'),
                   ),
                 ],
               ),
@@ -448,7 +460,8 @@ class _StatisticsTabState extends State<StatisticsTab> {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+      String title, String value, IconData icon, Color color) {
     return Card(
       child: Padding(
         padding: EdgeInsets.all(16.0),
@@ -457,9 +470,11 @@ class _StatisticsTabState extends State<StatisticsTab> {
           children: [
             Icon(icon, size: 32, color: color),
             SizedBox(height: 8),
-            Text(value, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            Text(value,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             SizedBox(height: 4),
-            Text(title, style: TextStyle(fontSize: 12), textAlign: TextAlign.center),
+            Text(title,
+                style: TextStyle(fontSize: 12), textAlign: TextAlign.center),
           ],
         ),
       ),

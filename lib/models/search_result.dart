@@ -29,9 +29,11 @@ class SearchResult {
       searchTerm: json['searchTerm'] as String,
       totalResults: json['totalResults'] as int,
       results: resultsList
-          .map((result) => AyahWithSurah.fromJson(result as Map<String, dynamic>))
+          .map((result) =>
+              AyahWithSurah.fromJson(result as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -63,7 +65,9 @@ class SearchResult {
 
   /// Get results by revelation type
   List<AyahWithSurah> getResultsByRevelationType(String revelationType) {
-    return results.where((ayah) => ayah.surah.revelationType == revelationType).toList();
+    return results
+        .where((ayah) => ayah.surah.revelationType == revelationType)
+        .toList();
   }
 
   /// Get results from specific Juz
@@ -190,10 +194,12 @@ class SearchStatistics {
   });
 
   /// Percentage of results from Meccan surahs
-  double get meccanPercentage => totalResults > 0 ? (meccanResults / totalResults) * 100 : 0;
+  double get meccanPercentage =>
+      totalResults > 0 ? (meccanResults / totalResults) * 100 : 0;
 
   /// Percentage of results from Medinan surahs
-  double get medinanPercentage => totalResults > 0 ? (medinanResults / totalResults) * 100 : 0;
+  double get medinanPercentage =>
+      totalResults > 0 ? (medinanResults / totalResults) * 100 : 0;
 
   /// The surah with the most results
   MapEntry<int, int>? get mostFrequentSurah {

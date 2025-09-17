@@ -74,19 +74,23 @@ class QuranConstants {
 /// Regex patterns for validation.
 class QuranRegexPatterns {
   /// Arabic character range
-  static const String arabicCharacters = r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]';
+  static const String arabicCharacters =
+      r'[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]';
 
   /// Basic Arabic text validation
   static RegExp arabicTextRegex = RegExp(arabicCharacters);
 
   /// Email validation
-  static RegExp emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+  static RegExp emailRegex =
+      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
   /// URL validation
-  static RegExp urlRegex = RegExp(r'^https?:\/\/([\w\-]+(\.[\w\-]+)+)([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?$');
+  static RegExp urlRegex = RegExp(
+      r'^https?:\/\/([\w\-]+(\.[\w\-]+)+)([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?$');
 
   /// Version number validation (semantic versioning)
-  static RegExp versionRegex = RegExp(r'^\d+\.\d+\.\d+(-[a-zA-Z0-9\-]+)?(\+[a-zA-Z0-9\-]+)?$');
+  static RegExp versionRegex =
+      RegExp(r'^\d+\.\d+\.\d+(-[a-zA-Z0-9\-]+)?(\+[a-zA-Z0-9\-]+)?$');
 }
 
 /// Quran-specific numerical constants.
@@ -159,7 +163,8 @@ class QuranErrorMessages {
       'Search term cannot exceed $maxLength characters';
 
   /// Data not initialized error
-  static const String dataNotInitialized = 'QuranService not initialized. Call QuranService.initialize() first.';
+  static const String dataNotInitialized =
+      'QuranService not initialized. Call QuranService.initialize() first.';
 
   /// Invalid revelation type error
   static String invalidRevelationType(String revelationType) =>
@@ -174,24 +179,20 @@ class QuranErrorMessages {
       'Limit must be between 1 and $maxLimit, got: $limit';
 
   /// File not found error
-  static String fileNotFound(String filePath) =>
-      'File not found: $filePath';
+  static String fileNotFound(String filePath) => 'File not found: $filePath';
 
   /// Invalid JSON structure error
   static String invalidJsonStructure(String details) =>
       'Invalid JSON structure: $details';
 
   /// Network error
-  static String networkError(String details) =>
-      'Network error: $details';
+  static String networkError(String details) => 'Network error: $details';
 
   /// Cache error
-  static String cacheError(String details) =>
-      'Cache error: $details';
+  static String cacheError(String details) => 'Cache error: $details';
 
   /// Permission error
-  static String permissionError(String details) =>
-      'Permission error: $details';
+  static String permissionError(String details) => 'Permission error: $details';
 }
 
 /// Success messages and informational constants.

@@ -31,7 +31,8 @@ class SurahSearchResult {
       results: resultsList
           .map((result) => Surah.fromJson(result as Map<String, dynamic>))
           .toList(),
-      source: json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
+      source:
+          json['source'] as String? ?? "Tanzil Project - https://tanzil.net",
     );
   }
 
@@ -53,7 +54,9 @@ class SurahSearchResult {
 
   /// Get results by revelation type
   List<Surah> getResultsByRevelationType(String revelationType) {
-    return results.where((surah) => surah.revelationType == revelationType).toList();
+    return results
+        .where((surah) => surah.revelationType == revelationType)
+        .toList();
   }
 
   /// Get Meccan surahs from results
@@ -67,7 +70,8 @@ class SurahSearchResult {
   /// Get results sorted by revelation order
   List<Surah> get resultsByRevelationOrder {
     final sortedResults = List<Surah>.from(results);
-    sortedResults.sort((a, b) => a.revelationOrder.compareTo(b.revelationOrder));
+    sortedResults
+        .sort((a, b) => a.revelationOrder.compareTo(b.revelationOrder));
     return sortedResults;
   }
 
