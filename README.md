@@ -30,7 +30,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  quran_data_dart: ^1.5.3
+  quran_data_dart: ^1.7.0
 ```
 
 Then run:

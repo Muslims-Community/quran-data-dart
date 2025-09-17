@@ -1,0 +1,13 @@
+# Configuration for dart test runner
+
+# Test discovery and reporting
+reporter: expanded
+timeout: 30s
+concurrency: 4
+
+# Test paths
+paths:
+  - test/
+
+# Platform configuration
+platforms: [vm]

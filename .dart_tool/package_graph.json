@@ -1,11 +1,11 @@
 {
   "roots": [
-    "quran"
+    "quran_data_dart"
   ],
   "packages": [
     {
-      "name": "quran",
-      "version": "1.5.1",
+      "name": "quran_data_dart",
+      "version": "1.7.0",
       "dependencies": [
         "collection",
         "flutter"

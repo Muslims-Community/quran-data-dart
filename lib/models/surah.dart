@@ -1,6 +1,16 @@
 import 'ayah.dart';
 
 /// Represents a complete surah (chapter) from the Quran.
+///
+/// A surah is one of the 114 chapters of the Quran. Each surah contains one or more
+/// ayat (verses) and has various attributes including its revelation location and order.
+///
+/// Example usage:
+/// ```dart
+/// final surah = await QuranService.getSurah(1); // Al-Fatiha
+/// print('${surah.englishName} has ${surah.numberOfAyahs} ayat');
+/// print('Revealed in ${surah.revelationType}');
+/// ```
 class Surah {
   /// The surah number in Mushaf order (1-114)
   final int id;

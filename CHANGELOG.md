@@ -5,6 +5,51 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2024-12-15
+
+### Added
+- **Developer Experience Enhancements**:
+  - Multiple comprehensive example applications (CLI, search, comprehensive usage)
+  - Detailed contribution guidelines (CONTRIBUTING.md)
+  - GitHub Actions CI/CD pipeline with automated testing
+  - Code coverage reporting and analysis
+  - Automated documentation generation
+
+- **Documentation Improvements**:
+  - Enhanced API documentation with detailed dartdoc comments
+  - Fixed package import references throughout documentation
+  - Added real-world usage examples for all major features
+  - Comprehensive code examples showing best practices
+
+- **Infrastructure**:
+  - GitHub Actions workflow for automated testing across Dart versions
+  - Automated pub.dev package analysis and scoring
+  - Documentation deployment to GitHub Pages
+  - Quality gates for code formatting and analysis
+
+### Improved
+- Package discoverability through better documentation
+- Developer onboarding experience
+- Code quality assurance through automated checks
+- Community contribution process
+
+## [1.6.0] - 2024-12-15
+
+### Added
+- Comprehensive test suite with 93+ tests covering:
+  - Unit tests for all QuranService core methods
+  - Model validation and serialization tests
+  - Extension method tests for Arabic text handling
+  - Integration tests for search functionality
+- Test configuration with dart_test.yaml
+- Automated test runner for all test suites
+- Extensive test coverage for error handling and edge cases
+
+### Improved
+- Enhanced code quality and reliability through testing
+- Better validation of API responses and data integrity
+- Comprehensive testing of Arabic text processing capabilities
+
 ## [1.5.3] - 2024-12-15
 
 ### Fixed

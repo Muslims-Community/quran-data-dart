@@ -1,6 +1,6 @@
 name: quran_data_dart
 description: A comprehensive, lightweight, and offline-first Quran data package for Dart and Flutter applications.
-version: 1.5.3
+version: 1.7.0
 homepage: https://github.com/Muslims-Community/quran-data-dart
 repository: https://github.com/Muslims-Community/quran-data-dart
 

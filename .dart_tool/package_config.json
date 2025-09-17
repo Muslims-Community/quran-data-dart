@@ -368,7 +368,7 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "quran",
+      "name": "quran_data_dart",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.17"
