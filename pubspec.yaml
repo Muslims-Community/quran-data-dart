@@ -21,7 +21,6 @@ dev_dependencies:
 
 
 # Dart package configuration
-publish_to: 'https://pub.dev'
 
 topics:
   - quran
