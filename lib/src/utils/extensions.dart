@@ -1,4 +1,5 @@
 /// Extensions for enhanced functionality throughout the Quran package.
+library quran.utils.extensions;
 
 /// Extensions on String for Arabic text handling.
 extension ArabicStringExtensions on String {
@@ -272,7 +273,12 @@ extension QuranMapExtensions<K, V> on Map<K, V> {
     final merged = Map<K, V>.from(this);
     other.forEach((key, value) {
       if (merged.containsKey(key) && onConflict != null) {
-        merged[key] = onConflict(merged[key]!, value);
+        final currentValue = merged[key];
+        if (currentValue != null) {
+          merged[key] = onConflict(currentValue, value);
+        } else {
+          merged[key] = value;
+        }
       } else {
         merged[key] = value;
       }
