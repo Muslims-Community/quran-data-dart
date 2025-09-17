@@ -1,9 +1,9 @@
 # Quran for Dart & Flutter
 
-[![pub package](https://img.shields.io/pub/v/quran.svg)](https://pub.dev/packages/quran)
-[![popularity](https://badges.bar/quran/popularity)](https://pub.dev/packages/quran/score)
-[![likes](https://badges.bar/quran/likes)](https://pub.dev/packages/quran/score)
-[![pub points](https://badges.bar/quran/pub%20points)](https://pub.dev/packages/quran/score)
+[![pub package](https://img.shields.io/pub/v/quran_data_dart.svg)](https://pub.dev/packages/quran_data_dart)
+[![popularity](https://badges.bar/quran_data_dart/popularity)](https://pub.dev/packages/quran_data_dart/score)
+[![likes](https://badges.bar/quran_data_dart/likes)](https://pub.dev/packages/quran_data_dart/score)
+[![pub points](https://badges.bar/quran_data_dart/pub%20points)](https://pub.dev/packages/quran_data_dart/score)
 
 **The most comprehensive, lightweight, and offline-first Quran data package for Dart and Flutter applications.**
 
@@ -30,7 +30,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  quran: ^1.1.0
+  quran_data_dart: ^1.5.3
 ```
 
 Then run:
@@ -44,7 +44,7 @@ flutter pub get
 ### Basic Usage
 
 ```dart
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 
 // Initialize the service (call once in your app)
 await QuranService.initialize();
@@ -65,7 +65,7 @@ print('Found ${results.totalResults} ayat containing "الله"');
 ### Enhanced Functions
 
 ```dart
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 
 // Daily Juz reading
 final juz1 = await QuranService.getJuz(1);
@@ -113,7 +113,7 @@ print('📊 ${stats.totalSurahs} surahs, ${stats.totalAyat} ayat');
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 
 class DailyReadingWidget extends StatefulWidget {
   @override
@@ -266,7 +266,7 @@ class _DailyReadingWidgetState extends State<DailyReadingWidget> {
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 
 class QuranSearchWidget extends StatefulWidget {
   @override
@@ -521,7 +521,7 @@ class SurahDetailsScreen extends StatelessWidget {
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 
 class QuranStatisticsWidget extends StatefulWidget {
   @override
@@ -797,7 +797,7 @@ class _QuranStatisticsWidgetState extends State<QuranStatisticsWidget> {
 ### Reading Progress Manager
 
 ```dart
-import 'package:quran/quran.dart';
+import 'package:quran_data_dart/quran.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QuranReadingProgress {
